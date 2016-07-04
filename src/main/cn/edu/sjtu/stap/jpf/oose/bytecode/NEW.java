@@ -16,7 +16,7 @@ public class NEW extends gov.nasa.jpf.symbc.bytecode.NEW {
 
 	@Override
 	public Instruction execute (ThreadInfo th) {
-		System.out.println("cn.edu.sjtu.stap.jpf.oose.bytecode.NEW executed.");
+		// System.out.println("cn.edu.sjtu.stap.jpf.oose.bytecode.NEW executed.");
 		return super.execute(th);
 	}
 	
