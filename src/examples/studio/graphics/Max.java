@@ -14,7 +14,6 @@ public class Max {
 		} else {
 			System.out.println("p1 is not farther");	
 		}
-		
 	}
 	
 }

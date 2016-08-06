@@ -28,6 +28,12 @@ public class ObjectSymbolicInstructionFactory extends SymbolicInstructionFactory
 		return new cn.edu.sjtu.stap.jpf.oose.bytecode.INVOKEVIRTUAL(clsName, methodName, methodSignature);
 	}
 
+
+	public Instruction getfield(String fieldName, String clsName, String fieldDescriptor){
+		// return (filter.isPassing(ci) ?  new GETFIELD(fieldName, clsName, fieldDescriptor): super.getfield(fieldName, clsName, fieldDescriptor));
+		return new cn.edu.sjtu.stap.jpf.oose.bytecode.GETFIELD(fieldName, clsName, fieldDescriptor);
+	}
+	
 	/*
 	public Instruction invokeinterface(String clsName, String methodName, String methodSignature) {
 		return (filter.isPassing(ci) ? new INVOKEINTERFACE(clsName, methodName, methodSignature): super.invokeinterface(clsName, methodName, methodSignature));

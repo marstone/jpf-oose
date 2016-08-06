@@ -27,9 +27,12 @@ import gov.nasa.jpf.vm.ThreadInfo;
 
 
 public class INVOKESTATIC extends gov.nasa.jpf.jvm.bytecode.INVOKESTATIC {
+	
+	
 	public INVOKESTATIC(String clsName, String methodName, String methodSignature) {
 	    super(clsName, methodName, methodSignature);
-	  }
+	}
+	
 	@Override
 	public Instruction execute( ThreadInfo th) {
 		ClassInfo clsInfo = getClassInfo();

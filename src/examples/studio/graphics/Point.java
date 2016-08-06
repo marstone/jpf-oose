@@ -2,7 +2,7 @@ package studio.graphics;
 
 public class Point {
 
-	int x;
+	public int x;
 	int y;
 	
 	public Point(int x, int y) {

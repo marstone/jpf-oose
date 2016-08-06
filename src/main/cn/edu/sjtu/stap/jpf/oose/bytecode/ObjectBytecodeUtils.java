@@ -22,7 +22,9 @@ import gov.nasa.jpf.vm.ChoiceGenerator;
 import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.ElementInfo;
 import gov.nasa.jpf.vm.FieldInfo;
+import gov.nasa.jpf.vm.Heap;
 import gov.nasa.jpf.vm.Instruction;
+import gov.nasa.jpf.vm.LoadOnJPFRequired;
 import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
@@ -244,8 +246,20 @@ public class ObjectBytecodeUtils {
 					}
 
 					else {
+						
+						ClassInfo ci;
+						// resolve the referenced class
+						ClassInfo cls = th.getTopFrameMethodInfo().getClassInfo();
+						try {
+							ci = cls.resolveReferencedClass(argTypes[j]);
+						} catch (LoadOnJPFRequired lre) {
+							throw lre;
+						}
+						Object[] argValues = invInst.getArgumentValues(th);
+						ElementInfo ei = (ElementInfo)argValues[j];
+						
                         // the argument is of reference type and it is symbolic
-						Expression sym_v = new SymbolicObject(BytecodeUtils.varName(name, VarType.REF), argTypes[j]);
+						Expression sym_v = new SymbolicObject(BytecodeUtils.varName(name, VarType.REF), ci, ei);
 						expressionMap.put(name, sym_v);
 						sf.setOperandAttr(stackIdx, sym_v);
 						outputString = outputString.concat(" " + sym_v + ",");

@@ -1,44 +1,17 @@
 package cn.edu.sjtu.stap.jpf.oose.object;
 
-import java.util.Map;
-
-import gov.nasa.jpf.symbc.numeric.ConstraintExpressionVisitor;
-import gov.nasa.jpf.symbc.numeric.Expression;
+import gov.nasa.jpf.vm.ClassInfo;
+import gov.nasa.jpf.vm.ElementInfo;
 
 /**
  * 
  * @author marstone
  * @since 2016/05
  */
-public class SymbolicObject extends Expression {
+public class SymbolicObject extends ObjectExpression {
 
+	public SymbolicObject(String varName, ClassInfo ci, ElementInfo ei) {
+		super(varName, ci, ei);
+	}
 	
-	public SymbolicObject(String varName, String clazz) {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public int compareTo(Expression o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public String stringPC() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void getVarsVals(Map<String, Object> varsVals) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void accept(ConstraintExpressionVisitor visitor) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
